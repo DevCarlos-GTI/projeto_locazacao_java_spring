@@ -23,6 +23,6 @@ public class Cidade {
     @Column(name = "nome", length = 50)
     private String nome;
 
-    @Column(name = "qtb_habitantes")
+    @Column(name = "qtd_habitantes")
     private Long habitantes;
 }

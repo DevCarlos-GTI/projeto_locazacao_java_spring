@@ -16,9 +16,6 @@ public class LocalizacaoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//System.out.println("Inicializado");
-		//testes temporarios..
-		salvarCidade();
 		listarCidade();
 	}
 
