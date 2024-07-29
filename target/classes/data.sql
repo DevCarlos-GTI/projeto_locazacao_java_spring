@@ -17,3 +17,7 @@ values
     (9, 'Palmas', 306296),
     (10, 'Natal', 890480),
     (11, 'Brasília', 2817381 );
+
+--select * from tb_cidade where nome like "s%" -- começa com
+--select * from tb_cidade where nome like "%s" -- termina com
+--select * from tb_cidade where nome like "%a%" --contem

@@ -21,25 +21,33 @@ public class LocalizacaoApplication implements CommandLineRunner {
 		//listarCidadePorHabitantes();
 		//listarCidadePorNomeComeçandoPor();
 		//listarCidadePorNomeTerminandoPor();
-		listarCidadePorNomeContendo();
+		//listarCidadePorNomeContendo();
+		listarCidadePorNomelike();
 	}
 	void listarCidadePorNome(){
 		cidadeRepository.findByNome("Salvador").forEach(System.out::println);
 	}
 
-	void listarCidadePorNomeComeçandoPor(){
-		cidadeRepository.findByNomeStartingWith("São").forEach(System.out::println);
+	void listarCidadePorNomelike(){
+		//cidadeRepository.findByNomeLike("%a%").forEach(System.out::println); //contem
+		//cidadeRepository.findByNomeLike("%ro").forEach(System.out::println); //termina com
+		//cidadeRepository.findByNomeLike("São%").forEach(System.out::println); //começa com
+		cidadeRepository.findByNomeLike("são%").forEach(System.out::println); //começa com/convert minu em Maiusc
 	}
 
-	void listarCidadePorNomeTerminandoPor(){
-		//cidadeRepository.findByNomeEndingWith("s").forEach(System.out::println);
-		cidadeRepository.findByNomeEndingWith("za").forEach(System.out::println);
-	}
-
-	void listarCidadePorNomeContendo(){
-		//cidadeRepository.findByNomeEndingWith("s").forEach(System.out::println);
-		cidadeRepository.findByNomeContaining("o").forEach(System.out::println);
-	}
+//	void listarCidadePorNomeComeçandoPor(){
+//		cidadeRepository.findByNomeStartingWith("São").forEach(System.out::println);
+//	}
+//
+//	void listarCidadePorNomeTerminandoPor(){
+//		//cidadeRepository.findByNomeEndingWith("s").forEach(System.out::println);
+//		cidadeRepository.findByNomeEndingWith("za").forEach(System.out::println);
+//	}
+//
+//	void listarCidadePorNomeContendo(){
+//		//cidadeRepository.findByNomeEndingWith("s").forEach(System.out::println);
+//		cidadeRepository.findByNomeContaining("o").forEach(System.out::println);
+//	}
 
 	void listarCidadePorHabitantes(){
 		cidadeRepository.findByHabitantes(1779000L).forEach(System.out::println);
