@@ -16,7 +16,7 @@ values
     (7, 'Porto Alegre', 1500000),
     (9, 'Palmas', 306296),
     (10, 'Natal', 890480),
-    (11, 'Brasília', 2817381 );
+    (11, 'Brasília', 1000000 );
 
 --select * from tb_cidade where nome like "s%" -- começa com
 --select * from tb_cidade where nome like "%s" -- termina com

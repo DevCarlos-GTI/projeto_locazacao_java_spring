@@ -22,7 +22,11 @@ public class LocalizacaoApplication implements CommandLineRunner {
 		//listarCidadePorNomeComeçandoPor();
 		//listarCidadePorNomeTerminandoPor();
 		//listarCidadePorNomeContendo();
-		listarCidadePorNomelike();
+		//listarCidadePorNomelike();
+		//listarCidadePorMenorHabitantes();
+		//listarCidadePorMenorOuIgualHabitantes();
+		//listarCidadePorMaiorHabitantes();
+		listarCidadePorMenorHabitantesENome();
 	}
 	void listarCidadePorNome(){
 		cidadeRepository.findByNome("Salvador").forEach(System.out::println);
@@ -50,7 +54,24 @@ public class LocalizacaoApplication implements CommandLineRunner {
 //	}
 
 	void listarCidadePorHabitantes(){
+
 		cidadeRepository.findByHabitantes(1779000L).forEach(System.out::println);
+	}
+
+	void listarCidadePorMenorHabitantes(){
+		cidadeRepository.findByHabitantesLessThan(1000000L).forEach(System.out::println);
+	}
+
+	void listarCidadePorMenorOuIgualHabitantes(){
+		cidadeRepository.findByHabitantesLessThanEqual(1000000L).forEach(System.out::println);
+	}
+
+	void listarCidadePorMenorHabitantesENome(){
+		cidadeRepository.findByHabitantesLessThanAndNomeLike(1000001L,"Br%").forEach(System.out::println);
+	}
+
+	void listarCidadePorMaiorHabitantes(){
+		cidadeRepository.findByHabitantesGreaterThan(1000000L).forEach(System.out::println);
 	}
 
 	//testando cidade no DB
