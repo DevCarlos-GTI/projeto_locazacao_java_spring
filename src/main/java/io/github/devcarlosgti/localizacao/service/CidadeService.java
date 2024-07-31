@@ -2,11 +2,11 @@ package io.github.devcarlosgti.localizacao.service;
 
 import io.github.devcarlosgti.localizacao.domain.entity.Cidade;
 import io.github.devcarlosgti.localizacao.domain.repository.CidadeRepository;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class CidadeService {
@@ -83,5 +83,18 @@ public class CidadeService {
 
     public void listarCidade(){
         repository.findAll().forEach(System.out::println);
+    }
+
+    public List<Cidade> filtroDinamico(Cidade cidade){
+        //para não precisar fazer varis ifs para testar se é null ou ñ usa a interface Example
+        ExampleMatcher matcher = ExampleMatcher.
+                matching()
+                .withIgnoreCase() //ignora caixa baixa ou alta
+                .withStringMatcher(ExampleMatcher.StringMatcher.STARTING) // traz ja com inicio da palavra
+//                .withIgnoreNullValues() //ignora valores nulls
+                ;
+        Example<Cidade> example = Example.of(cidade, matcher);
+        return repository.findAll(example);
+//       return repository.findByHabitantesLessThanAndNomeLike(cidade.getHabitantes(), cidade.getNome());
     }
 }
