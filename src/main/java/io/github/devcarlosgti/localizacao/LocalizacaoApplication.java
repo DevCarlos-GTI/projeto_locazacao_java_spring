@@ -28,8 +28,9 @@ public class LocalizacaoApplication implements CommandLineRunner {
 		//var cidade = new Cidade(null, "Porto Alegre", 127L); //outro teste -> não tem essa quanti
 		//var cidade = new Cidade(null, "porto Alegre", null);
 		//var cidade = new Cidade(null, "porto", null);
-		var cidade = new Cidade(null, "são", null);
-		service.filtroDinamico(cidade).forEach(System.out::println);
+//		var cidade = new Cidade(null, "são", null);
+//		service.filtroDinamico(cidade).forEach(System.out::println);
+		service.listarCidadesByNomeSpecs();
 	}
 
 	public static void main(String[] args) {

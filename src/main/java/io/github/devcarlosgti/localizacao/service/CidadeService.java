@@ -2,7 +2,9 @@ package io.github.devcarlosgti.localizacao.service;
 
 import io.github.devcarlosgti.localizacao.domain.entity.Cidade;
 import io.github.devcarlosgti.localizacao.domain.repository.CidadeRepository;
+import static io.github.devcarlosgti.localizacao.domain.repository.specs.CidadeSpecs.*;
 import org.springframework.data.domain.*;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -96,5 +98,14 @@ public class CidadeService {
         Example<Cidade> example = Example.of(cidade, matcher);
         return repository.findAll(example);
 //       return repository.findByHabitantesLessThanAndNomeLike(cidade.getHabitantes(), cidade.getNome());
+    }
+
+    public void listarCidadesByNomeSpecs(){
+        repository
+                //.findAll(nomeEqual("São Paulo").and(habitantesGreaterThan(1000)))
+                //.findAll(nomeEqual("São Paulo").or(habitantesGreaterThan(1000))) //outro teste
+                //.findAll(propertyEqual("nome","São Paulo").or(propertyEqual("habitantes", 12330000))) //outro teste
+                .findAll(nomeEqual("São Paulo").or(idEqual(4L))) //outro teste
+                .forEach(System.out::println);
     }
 }
