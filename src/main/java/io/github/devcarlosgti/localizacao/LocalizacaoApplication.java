@@ -32,8 +32,12 @@ public class LocalizacaoApplication implements CommandLineRunner {
 //		service.filtroDinamico(cidade).forEach(System.out::println);
 	//	service.listarCidadesByNomeSpecs();
 
-		var cidade = new Cidade(1L, "São Luís", 100L); // busque pelo id, cidade e > 100
-		service.listarCidadesSpecsFiltroDinamico(cidade);
+//		var cidade = new Cidade(1L, "São Luís", 100L); // busque pelo id, cidade e > 100
+//		service.listarCidadesSpecsFiltroDinamico(cidade);
+
+		//service.listarCidadePorNomeSql();
+		//service.listarCidadePorNomeSqlPorNomeCidade();
+		service.listarCidadePorNomeSqlPorIdNomeCidade();
 	}
 
 	public static void main(String[] args) {

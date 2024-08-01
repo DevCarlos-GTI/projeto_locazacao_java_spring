@@ -29,7 +29,27 @@ public class CidadeService {
     }
 
     public void listarCidadePorNome(){
+
         repository.findByNome("Salvador").forEach(System.out::println);
+    }
+
+    public void listarCidadePorNomeSql(){
+        repository
+                .findByNomeSqlNativo("São Paulo")
+                .forEach(System.out::println);
+    }
+
+    public void listarCidadePorNomeSqlPorNomeCidade(){
+        repository
+                .findByNomeSqlNativoPorNomeCidade("São Paulo")
+                .forEach(System.out::println);
+    }
+
+    public void listarCidadePorNomeSqlPorIdNomeCidade(){
+        repository
+                .findByNomeSqlNativoPorNomeIdCidade("São Luís")
+                .stream().map(cidadeProjection -> new Cidade(cidadeProjection.getId(), cidadeProjection.getNome(), null))
+                .forEach(System.out::println);
     }
 
     public void listarCidadePorNomelike(){
@@ -38,6 +58,7 @@ public class CidadeService {
         //cidadeRepository.findByNomeLike("São%").forEach(System.out::println); //começa com
         repository.findByNomeLike("São%").forEach(System.out::println); //começa com/convert minu em Maiusc
     }
+
     public void listarCidadePorNomelikeOrdenacao(){
         repository.findByNomeLikeSort("São%", Sort.by("habitantes")).forEach(System.out::println); //começa com/convert minu em Maiusc
     }

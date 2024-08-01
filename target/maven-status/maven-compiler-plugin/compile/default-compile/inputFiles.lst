@@ -1,3 +1,6 @@
 D:\Users\Gleyson\Documents\CursoExpertemSpringBoot\localizacao\src\main\java\io\github\devcarlosgti\localizacao\LocalizacaoApplication.java
 D:\Users\Gleyson\Documents\CursoExpertemSpringBoot\localizacao\src\main\java\io\github\devcarlosgti\localizacao\domain\repository\CidadeRepository.java
+D:\Users\Gleyson\Documents\CursoExpertemSpringBoot\localizacao\src\main\java\io\github\devcarlosgti\localizacao\domain\repository\projections\CidadeProjection.java
+D:\Users\Gleyson\Documents\CursoExpertemSpringBoot\localizacao\src\main\java\io\github\devcarlosgti\localizacao\domain\repository\specs\CidadeSpecs.java
+D:\Users\Gleyson\Documents\CursoExpertemSpringBoot\localizacao\src\main\java\io\github\devcarlosgti\localizacao\service\CidadeService.java
 D:\Users\Gleyson\Documents\CursoExpertemSpringBoot\localizacao\src\main\java\io\github\devcarlosgti\localizacao\domain\entity\Cidade.java
