@@ -2,13 +2,15 @@ package io.github.devcarlosgti.localizacao.service;
 
 import io.github.devcarlosgti.localizacao.domain.entity.Cidade;
 import io.github.devcarlosgti.localizacao.domain.repository.CidadeRepository;
-import static io.github.devcarlosgti.localizacao.domain.repository.specs.CidadeSpecs.*;
 import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
+
+import static io.github.devcarlosgti.localizacao.domain.repository.specs.CidadeSpecs.*;
 
 @Service
 public class CidadeService {
@@ -107,5 +109,23 @@ public class CidadeService {
                 //.findAll(propertyEqual("nome","São Paulo").or(propertyEqual("habitantes", 12330000))) //outro teste
                 .findAll(nomeEqual("São Paulo").or(idEqual(4L))) //outro teste
                 .forEach(System.out::println);
+    }
+
+    public void listarCidadesSpecsFiltroDinamico(Cidade filtro){
+        Specification<Cidade> specs = Specification.where(((root, query, cb) -> cb.conjunction() ));
+        // resumindo -> select * from cidade where(onde) 1 = 1;
+
+        if(filtro.getId() != null){
+            specs = specs.and(idEqual(filtro.getId())); // se ñ for nul, ele recebe esse id filtrado
+        }
+
+        if(StringUtils.hasText(filtro.getNome())){ // se existe algum texto, ou seja, ñ esteja vazio
+            specs = specs.and(nomeLike(filtro.getNome())); // pega esse nome
+        }
+
+        if(filtro.getHabitantes() != null){
+            specs = specs.and(habitantesGreaterThan(filtro.getHabitantes()));
+        }
+        repository.findAll(specs).forEach(System.out::println); // se td dê certo imprimo
     }
 }
